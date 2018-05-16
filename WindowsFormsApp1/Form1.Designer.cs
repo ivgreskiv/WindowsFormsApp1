@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,6 +37,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Namess = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
@@ -60,6 +64,7 @@
             this.aves = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.lskdsa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +76,7 @@
             this.ursl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView8 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,17 +101,13 @@
             this.Images_Compare_Grid = new System.Windows.Forms.DataGridView();
             this.linke = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button11 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Namess = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
@@ -127,7 +129,6 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Images_Compare_Grid)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,6 +217,29 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Image Viewer";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Namess,
+            this.Value});
+            this.dataGridView1.Location = new System.Drawing.Point(713, 59);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(550, 525);
+            this.dataGridView1.TabIndex = 7;
+            // 
+            // Namess
+            // 
+            this.Namess.HeaderText = "Name";
+            this.Namess.Name = "Namess";
+            this.Namess.Width = 250;
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            this.Value.Width = 250;
             // 
             // tabPage2
             // 
@@ -430,6 +454,13 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Results";
             // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(6, 608);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(536, 23);
+            this.progressBar2.TabIndex = 9;
+            // 
             // dataGridView4
             // 
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -530,6 +561,15 @@
             this.groupBox8.TabIndex = 5;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Result";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(199, 268);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "50/50";
             // 
             // dataGridView8
             // 
@@ -742,58 +782,6 @@
             this.tabPage5.Text = "Settings";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(6, 56);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(223, 31);
-            this.button11.TabIndex = 0;
-            this.button11.Text = "Drop Table - compare_buf";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(199, 268);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "50/50";
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(6, 19);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(223, 31);
-            this.button12.TabIndex = 1;
-            this.button12.Text = "Drop Table - an_base_our_screens";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            this.Value.Width = 250;
-            // 
-            // Namess
-            // 
-            this.Namess.HeaderText = "Name";
-            this.Namess.Name = "Namess";
-            this.Namess.Width = 250;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Namess,
-            this.Value});
-            this.dataGridView1.Location = new System.Drawing.Point(713, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(550, 525);
-            this.dataGridView1.TabIndex = 7;
-            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.button12);
@@ -805,12 +793,25 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "DB Actions";
             // 
-            // progressBar2
+            // button12
             // 
-            this.progressBar2.Location = new System.Drawing.Point(6, 608);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(536, 23);
-            this.progressBar2.TabIndex = 9;
+            this.button12.Location = new System.Drawing.Point(6, 19);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(223, 31);
+            this.button12.TabIndex = 1;
+            this.button12.Text = "Drop Table - an_base_our_screens";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(6, 56);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(223, 31);
+            this.button11.TabIndex = 0;
+            this.button11.Text = "Drop Table - compare_buf";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Form1
             // 
@@ -819,6 +820,7 @@
             this.ClientSize = new System.Drawing.Size(1276, 669);
             this.Controls.Add(this.tabControl1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "AI Image Detector";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -826,6 +828,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
@@ -850,7 +853,6 @@
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Images_Compare_Grid)).EndInit();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
