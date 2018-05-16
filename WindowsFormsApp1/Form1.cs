@@ -225,7 +225,7 @@ namespace WindowsFormsApp1
                 {
                     string buf = reader["count"].ToString();
                     int count = Convert.ToInt32(buf);
-                    if (count > 5)
+                    if (count > 150)
                     {
                         dataGridView6.Rows.Add(reader["name"], reader["count"], reader["suma"], reader["aver"]);
 
@@ -502,7 +502,7 @@ namespace WindowsFormsApp1
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (Convert.ToInt32(reader["comparsions"].ToString()) > 5)
+                    if (Convert.ToInt32(reader["comparsions"].ToString()) > 30)
                     {
                         dataGridView8.Rows.Add(reader["aver"], reader["comparsions"], reader["link"]);                       
                     }
@@ -523,13 +523,32 @@ namespace WindowsFormsApp1
             MySqlConnection conn = DBUtils.GetDBConnection();
             MySqlCommand cmd = conn.CreateCommand();
 
-            string drop1 = "TRUNCATE `an_base_our_screens`; TRUNCATE `compare_buf`; TRUNCATE `an_base`; TRUNCATE `averages`; ";
+            string drop1 = "TRUNCATE `compare_buf`; ";
 
 
             cmd.Connection.Open();
 
             cmd.CommandText = drop1;
            
+            MySqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            reader.Read();
+
+            MessageBox.Show("Tables Dropped!", "Success", MessageBoxButtons.OK);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            string drop1 = "TRUNCATE `an_base_our_screens`;";
+
+
+            cmd.Connection.Open();
+
+            cmd.CommandText = drop1;
+
             MySqlDataReader reader;
             reader = cmd.ExecuteReader();
             reader.Read();

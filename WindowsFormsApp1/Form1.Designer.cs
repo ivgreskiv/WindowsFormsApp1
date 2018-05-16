@@ -33,9 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Namess = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -64,12 +61,26 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.lskdsa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.idd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ursl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.dataGridView8 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.somenames = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valuuues = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkeds = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.Mini_Log = new System.Windows.Forms.RichTextBox();
@@ -83,24 +94,14 @@
             this.Load_Images_Cmp = new System.Windows.Forms.Button();
             this.Images_Compare_Grid = new System.Windows.Forms.DataGridView();
             this.linke = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lskdsa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
-            this.somenames = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valuuues = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linkeds = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView8 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button11 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Namess = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -116,14 +117,15 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Screen_Analyze_Grid)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Images_Compare_Grid)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -171,29 +173,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Namess,
-            this.Value});
-            this.dataGridView1.Location = new System.Drawing.Point(713, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(550, 525);
-            this.dataGridView1.TabIndex = 7;
-            // 
-            // Namess
-            // 
-            this.Namess.HeaderText = "Name";
-            this.Namess.Name = "Namess";
-            this.Namess.Width = 250;
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            this.Value.Width = 250;
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(713, 590);
@@ -212,10 +191,10 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabControl1.Location = new System.Drawing.Point(-3, 1);
+            this.tabControl1.Location = new System.Drawing.Point(-3, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1302, 686);
+            this.tabControl1.Size = new System.Drawing.Size(1283, 672);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -230,9 +209,9 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1294, 660);
+            this.tabPage1.Size = new System.Drawing.Size(1294, 664);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Check 1 IMG";
+            this.tabPage1.Text = "Image Viewer";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -242,7 +221,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1294, 660);
+            this.tabPage2.Size = new System.Drawing.Size(1294, 664);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "View DB";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -345,7 +324,7 @@
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1294, 660);
+            this.tabPage3.Size = new System.Drawing.Size(1294, 664);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Analize";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -460,6 +439,23 @@
             this.dataGridView4.TabIndex = 8;
             this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
             // 
+            // lskdsa
+            // 
+            this.lskdsa.HeaderText = "Link";
+            this.lskdsa.Name = "lskdsa";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Value";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 250;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button5);
@@ -512,10 +508,109 @@
             this.tabPage4.Controls.Add(this.groupBox6);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1294, 660);
+            this.tabPage4.Size = new System.Drawing.Size(1275, 646);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Check and compare screens";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Controls.Add(this.dataGridView8);
+            this.groupBox8.Controls.Add(this.dataGridView7);
+            this.groupBox8.Controls.Add(this.button10);
+            this.groupBox8.Controls.Add(this.button6);
+            this.groupBox8.Location = new System.Drawing.Point(836, 3);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(436, 633);
+            this.groupBox8.TabIndex = 5;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Result";
+            // 
+            // dataGridView8
+            // 
+            this.dataGridView8.AllowUserToAddRows = false;
+            this.dataGridView8.AllowUserToDeleteRows = false;
+            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView8.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dataGridView8.Location = new System.Drawing.Point(6, 289);
+            this.dataGridView8.Name = "dataGridView8";
+            this.dataGridView8.ReadOnly = true;
+            this.dataGridView8.Size = new System.Drawing.Size(424, 309);
+            this.dataGridView8.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Average Value";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Comparsions";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 30;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Screen";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 250;
+            // 
+            // dataGridView7
+            // 
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.somenames,
+            this.valuuues,
+            this.linkeds});
+            this.dataGridView7.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(424, 240);
+            this.dataGridView7.TabIndex = 2;
+            // 
+            // somenames
+            // 
+            this.somenames.HeaderText = "Name";
+            this.somenames.Name = "somenames";
+            this.somenames.Width = 60;
+            // 
+            // valuuues
+            // 
+            this.valuuues.HeaderText = "Value";
+            this.valuuues.Name = "valuuues";
+            this.valuuues.Width = 60;
+            // 
+            // linkeds
+            // 
+            this.linkeds.HeaderText = "Link";
+            this.linkeds.Name = "linkeds";
+            this.linkeds.Width = 260;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(225, 604);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(205, 23);
+            this.button10.TabIndex = 1;
+            this.button10.Text = "Start";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 604);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(213, 23);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "Compare";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // progressBar1
             // 
@@ -632,125 +727,14 @@
             this.linke.Name = "linke";
             this.linke.Width = 200;
             // 
-            // lskdsa
-            // 
-            this.lskdsa.HeaderText = "Link";
-            this.lskdsa.Name = "lskdsa";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Value";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 250;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.dataGridView8);
-            this.groupBox8.Controls.Add(this.dataGridView7);
-            this.groupBox8.Controls.Add(this.button10);
-            this.groupBox8.Controls.Add(this.button6);
-            this.groupBox8.Location = new System.Drawing.Point(836, 3);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(436, 633);
-            this.groupBox8.TabIndex = 5;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Result";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(6, 604);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(213, 23);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Compare";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(225, 604);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(205, 23);
-            this.button10.TabIndex = 1;
-            this.button10.Text = "Start";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // dataGridView7
-            // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.somenames,
-            this.valuuues,
-            this.linkeds});
-            this.dataGridView7.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.Size = new System.Drawing.Size(424, 240);
-            this.dataGridView7.TabIndex = 2;
-            // 
-            // somenames
-            // 
-            this.somenames.HeaderText = "Name";
-            this.somenames.Name = "somenames";
-            this.somenames.Width = 60;
-            // 
-            // valuuues
-            // 
-            this.valuuues.HeaderText = "Value";
-            this.valuuues.Name = "valuuues";
-            this.valuuues.Width = 60;
-            // 
-            // linkeds
-            // 
-            this.linkeds.HeaderText = "Link";
-            this.linkeds.Name = "linkeds";
-            this.linkeds.Width = 260;
-            // 
-            // dataGridView8
-            // 
-            this.dataGridView8.AllowUserToAddRows = false;
-            this.dataGridView8.AllowUserToDeleteRows = false;
-            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView8.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView8.Location = new System.Drawing.Point(6, 266);
-            this.dataGridView8.Name = "dataGridView8";
-            this.dataGridView8.ReadOnly = true;
-            this.dataGridView8.Size = new System.Drawing.Size(424, 332);
-            this.dataGridView8.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Average Value";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Comparsions";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 30;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Screen";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 250;
-            // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button12);
             this.tabPage5.Controls.Add(this.button11);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1294, 660);
+            this.tabPage5.Size = new System.Drawing.Size(1294, 664);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Settings";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -759,11 +743,53 @@
             // 
             this.button11.Location = new System.Drawing.Point(12, 7);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(1251, 57);
+            this.button11.Size = new System.Drawing.Size(620, 57);
             this.button11.TabIndex = 0;
-            this.button11.Text = "DROP TABLES";
+            this.button11.Text = "Drop Table - compare_buf";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(199, 268);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "50/50";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(638, 7);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(625, 57);
+            this.button12.TabIndex = 1;
+            this.button12.Text = "Drop Table - an_base_our_screens";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            this.Value.Width = 250;
+            // 
+            // Namess
+            // 
+            this.Namess.HeaderText = "Name";
+            this.Namess.Name = "Namess";
+            this.Namess.Width = 250;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Namess,
+            this.Value});
+            this.dataGridView1.Location = new System.Drawing.Point(713, 59);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(550, 525);
+            this.dataGridView1.TabIndex = 7;
             // 
             // Form1
             // 
@@ -776,7 +802,6 @@
             this.Text = "AI Image Detector";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -795,14 +820,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Screen_Analyze_Grid)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Images_Compare_Grid)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -814,7 +841,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -822,8 +848,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Namess;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn scr_link;
@@ -880,6 +904,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Namess;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
     }
 }
 
