@@ -24,7 +24,14 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ToolTip t = new ToolTip();
+            t.SetToolTip(button6, "Press to compare screens and than press start to load Best Screen");
 
+            ToolTip t1 = new ToolTip();
+            t1.SetToolTip(Load_Images_Cmp, "Press this button to start Analyzing screens");
+
+            ToolTip t2 = new ToolTip();
+            t1.SetToolTip(Screen_Anal_Button, "Press to begin analyzing of Tube Screens");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -151,7 +158,7 @@ namespace WindowsFormsApp1
 
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
 
@@ -287,7 +294,8 @@ namespace WindowsFormsApp1
             MySqlConnection conn = DBUtils.GetDBConnection();
             MySqlCommand cmd = conn.CreateCommand();
             int rown = dataGridView3.RowCount;
-            //progressBar2.Maximum = rown;
+            progressBar2.Maximum = 1365;
+            int coun1t = 0;
             cmd.Connection.Open();
             for (int i = 0; i < (rown - 1); i++)
             {
@@ -312,6 +320,10 @@ namespace WindowsFormsApp1
                     }
                         
                     
+                }
+                if (coun1t <= progressBar2.Maximum)
+                {
+                    progressBar2.Value = coun1t++;
                 }
             }
             //MessageBox.Show("sdjs;fk");
@@ -425,8 +437,36 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
+            dataGridView6.Rows.Clear();
             MySqlConnection conn = DBUtils.GetDBConnection();
             MySqlCommand cmd = conn.CreateCommand();
+
+            string sql_count = "SELECT name, value, COUNT(name) as count, SUM(value) as suma, SUM(value) / COUNT(name) as aver FROM an_base GROUP BY name";
+
+            cmd.Connection = conn;
+            cmd.CommandText = sql_count;
+            MySqlDataReader reader;
+            try
+            {
+                cmd.Connection.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string buf = reader["count"].ToString();
+                    int count = Convert.ToInt32(buf);
+                    if (count > 150)
+                    {
+                        dataGridView6.Rows.Add(reader["name"], reader["count"], reader["suma"], reader["aver"]);
+
+                    }
+                }
+                reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error: \r\n{ 0}" + ex.ToString(), "Error", MessageBoxButtons.OK);
+            }
 
             string sql_our_screens = "SELECT * FROM an_base_our_screens"; // выбираем нашу БД и выводим с нее все
             
@@ -434,7 +474,7 @@ namespace WindowsFormsApp1
             cmd.Connection = conn; //открываем соединение
             cmd.CommandText = sql_our_screens; //вбиваем запрос
 
-            MySqlDataReader reader;
+            
 
             int rows_c = dataGridView6.RowCount;
             
@@ -443,11 +483,10 @@ namespace WindowsFormsApp1
             //2) Лучшие результаты вбиваем в dataGridView7
             //3) Выбираем лучшие результаты из dataGridView7 (предположительно складываем все основные признаки и выбираем лучшее по среднему)
             //4) Выводим в dataGridView8 результат (должно быть только 1-но изображение)
-            //
 
             try
             {
-                cmd.Connection.Open();
+                
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {                    
@@ -455,10 +494,7 @@ namespace WindowsFormsApp1
                     {
                         if ((reader["name"].ToString() == dataGridView6[0, i].Value.ToString()) && (Convert.ToDecimal(reader["value"].ToString()) > Convert.ToDecimal(dataGridView6[3, i].Value.ToString()))) //поиск совпадающих имен и сравнение value
                         {
-                            dataGridView7.Rows.Add(reader["name"], reader["value"], reader["img_link"]);
-                            Mini_Log.AppendText(reader["img_link"] + "\n");
-                           
-                            
+                            dataGridView7.Rows.Add(reader["name"], reader["value"], reader["img_link"]);                                                                                   
                         }                        
                     }
                 }
@@ -475,6 +511,7 @@ namespace WindowsFormsApp1
 
         private void button10_Click(object sender, EventArgs e)
         {
+            
             MySqlConnection conn = DBUtils.GetDBConnection();
             MySqlCommand cmd = conn.CreateCommand();
             int rows_d = dataGridView7.RowCount;
@@ -502,7 +539,7 @@ namespace WindowsFormsApp1
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (Convert.ToInt32(reader["comparsions"].ToString()) > 30)
+                    if (Convert.ToInt32(reader["comparsions"].ToString()) > 15)
                     {
                         dataGridView8.Rows.Add(reader["aver"], reader["comparsions"], reader["link"]);                       
                     }
@@ -515,7 +552,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error: \r\n{ 0}" + ex.ToString(), "Error", MessageBoxButtons.OK);
                 
             }
-            Mini_Log.AppendText(">> BEST SCREEN: " + dataGridView8[2, 0].Value.ToString());
+            //Mini_Log.AppendText(">> BEST SCREEN: " + dataGridView8[2, 0].Value.ToString());
         }
 
         private void button11_Click(object sender, EventArgs e)

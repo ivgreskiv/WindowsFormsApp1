@@ -101,6 +101,8 @@
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Namess = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -126,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Images_Compare_Grid)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -209,7 +212,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1294, 664);
+            this.tabPage1.Size = new System.Drawing.Size(1275, 646);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Image Viewer";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -221,7 +224,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1294, 664);
+            this.tabPage2.Size = new System.Drawing.Size(1275, 646);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "View DB";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -324,7 +327,7 @@
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1294, 664);
+            this.tabPage3.Size = new System.Drawing.Size(1275, 646);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Analize";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -418,6 +421,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.progressBar2);
             this.groupBox4.Controls.Add(this.dataGridView4);
             this.groupBox4.Location = new System.Drawing.Point(262, 3);
             this.groupBox4.Name = "groupBox4";
@@ -435,7 +439,7 @@
             this.dataGridViewTextBoxColumn2});
             this.dataGridView4.Location = new System.Drawing.Point(6, 19);
             this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(536, 612);
+            this.dataGridView4.Size = new System.Drawing.Size(536, 583);
             this.dataGridView4.TabIndex = 8;
             this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
             // 
@@ -729,21 +733,20 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button12);
-            this.tabPage5.Controls.Add(this.button11);
+            this.tabPage5.Controls.Add(this.groupBox9);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1294, 664);
+            this.tabPage5.Size = new System.Drawing.Size(1275, 646);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Settings";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(12, 7);
+            this.button11.Location = new System.Drawing.Point(6, 56);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(620, 57);
+            this.button11.Size = new System.Drawing.Size(223, 31);
             this.button11.TabIndex = 0;
             this.button11.Text = "Drop Table - compare_buf";
             this.button11.UseVisualStyleBackColor = true;
@@ -760,9 +763,9 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(638, 7);
+            this.button12.Location = new System.Drawing.Point(6, 19);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(625, 57);
+            this.button12.Size = new System.Drawing.Size(223, 31);
             this.button12.TabIndex = 1;
             this.button12.Text = "Drop Table - an_base_our_screens";
             this.button12.UseVisualStyleBackColor = true;
@@ -790,6 +793,24 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(550, 525);
             this.dataGridView1.TabIndex = 7;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.button12);
+            this.groupBox9.Controls.Add(this.button11);
+            this.groupBox9.Location = new System.Drawing.Point(11, 6);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(235, 100);
+            this.groupBox9.TabIndex = 2;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "DB Actions";
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(6, 608);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(536, 23);
+            this.progressBar2.TabIndex = 9;
             // 
             // Form1
             // 
@@ -830,6 +851,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Images_Compare_Grid)).EndInit();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -909,6 +931,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Namess;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.ProgressBar progressBar2;
     }
 }
 
