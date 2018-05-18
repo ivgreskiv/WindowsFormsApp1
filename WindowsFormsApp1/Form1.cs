@@ -555,11 +555,6 @@ namespace WindowsFormsApp1
 
         }
 
-
-
-
-
-
         private void button11_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = DBUtils.GetDBConnection();
@@ -600,8 +595,12 @@ namespace WindowsFormsApp1
 
         private void button13_Click(object sender, EventArgs e)
         {
-            
 
+            int j = 2;
+            int i = 0;
+            int k = 0;
+            int count = 14;
+            int rzm = Images_Compare_Grid.Rows.Count;
             MySqlConnection conn = DBUtils.GetDBConnection();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.Connection.Open();
@@ -621,7 +620,25 @@ namespace WindowsFormsApp1
                  
                 }
                 reader.Close();
-                
+                for (; i < rzm; i++)
+                {
+
+
+                    if ((Images_Compare_Grid[1,i].Value.ToString() == dataGridView1[0, k].Value.ToString()) && (k < 2))
+                    {
+                        dataGridView1[j, k].Value = GetImageFromUrl(Images_Compare_Grid[0, i].Value.ToString());
+                        j++;
+                    }
+                    else
+                    {
+                        j = 2;
+                        if (k < dataGridView1.Rows.Count)
+                        {
+                            k++;
+                        }
+                        else k=0;
+                    }
+                }
             }
             catch (MySqlException ex)
             {
