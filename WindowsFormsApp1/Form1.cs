@@ -11,12 +11,14 @@ using System.Net;
 using Clarifai.API;
 using Clarifai.DTOs.Inputs;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -43,38 +45,9 @@ namespace WindowsFormsApp1
 
         }
 
-        private async void button2_Click(object sender, EventArgs e)
-        {
-            var client = new ClarifaiClient("f5d04074f20343b787952a2605d34b3a");
+        
 
-            var res = await client.PublicModels.GeneralModel.Predict(new ClarifaiURLImage(textBox1.Text)).ExecuteAsync();
-            foreach (var concept in res.Get().Data)
-            {
-                dataGridView1.Rows.Add($"{concept.Name}", $"{concept.Value}");
-            }
-
-            var res1 = await client.PublicModels.NsfwModel.Predict(new ClarifaiURLImage(textBox1.Text)).ExecuteAsync();
-            foreach (var concept in res1.Get().Data)
-            {
-                dataGridView1.Rows.Add($"{concept.Name}", $"{concept.Value}");
-            }
-
-
-        }
-
-        private async void button3_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Rows.Clear();
-
-            var client = new ClarifaiClient("f5d04074f20343b787952a2605d34b3a");
-
-            var res2 = await client.PublicModels.FocusModel.Predict(new ClarifaiURLImage(textBox1.Text)).ExecuteAsync();
-            foreach (var concept in res2.Get().Data)
-            {
-                dataGridView1.Rows.Add($"Density", $"{concept.Density}");
-                dataGridView1.Rows.Add($"Focus Value", $"{concept.Value}");
-            }
-        }
+       
 
         private void button4_Click_1(object sender, EventArgs e)
         {
@@ -158,7 +131,7 @@ namespace WindowsFormsApp1
 
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
 
@@ -232,7 +205,7 @@ namespace WindowsFormsApp1
                 {
                     string buf = reader["count"].ToString();
                     int count = Convert.ToInt32(buf);
-                    if (count > 150)
+                    if (count > Convert.ToInt32(textBox3.Text.ToString()))
                     {
                         dataGridView6.Rows.Add(reader["name"], reader["count"], reader["suma"], reader["aver"]);
 
@@ -306,8 +279,8 @@ namespace WindowsFormsApp1
                 foreach (var concept in res.Get().Data)
                 {
                     dataGridView4.Rows.Add(linked, $"{concept.Name}", $"{concept.Value}");
-                   
-                            
+
+
                     string sql = "INSERT INTO an_base (name,value,img_link) VALUES (@name,@val,@link)";
                     using (MySqlCommand cmd1 = new MySqlCommand(sql, conn))
                     {
@@ -318,8 +291,8 @@ namespace WindowsFormsApp1
 
                         cmd1.ExecuteNonQuery();
                     }
-                        
-                    
+
+
                 }
                 if (coun1t <= progressBar2.Maximum)
                 {
@@ -371,11 +344,11 @@ namespace WindowsFormsApp1
                 cmd.Connection.Open();
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
-                {                                 
-                        Images_Compare_Grid.Rows.Add(reader["link"]);                    
+                {
+                    Images_Compare_Grid.Rows.Add(reader["link"], reader["vid_id"]);
                 }
                 reader.Close();
-                
+
             }
             catch (MySqlException ex)
             {
@@ -397,25 +370,26 @@ namespace WindowsFormsApp1
             MySqlConnection conn = DBUtils.GetDBConnection();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.Connection.Open();
-            string truncate = "TRUNCATE `an_base_our_screens`;" ;
+            string truncate = "TRUNCATE `an_base_our_screens`;";
             cmd.CommandText = truncate;
             for (int n = 0; n < (rowsin); n++)
             {
                 string links = Images_Compare_Grid[0, n].Value.ToString();
                 var res = await client.PublicModels.GeneralModel.Predict(new ClarifaiURLImage(links)).ExecuteAsync();
+                int vid_id = Convert.ToInt32(Images_Compare_Grid[1, n].Value.ToString());
 
                 try
                 {
                     foreach (var concept in res.Get().Data)
                     {
-                        Screen_Analyze_Grid.Rows.Add($"{concept.Name}", $"{concept.Value}", links);
-                        string sql = "INSERT INTO an_base_our_screens (name,value,img_link) VALUES (@name,@val,@link)";
+                        Screen_Analyze_Grid.Rows.Add($"{concept.Name}", $"{concept.Value}", links, vid_id);
+                        string sql = "INSERT INTO an_base_our_screens (name,value,img_link,vid_id) VALUES (@name,@val,@link,@img_id)";
                         using (MySqlCommand cmd1 = new MySqlCommand(sql, conn))
                         {
-
                             cmd1.Parameters.AddWithValue("@name", concept.Name);
                             cmd1.Parameters.AddWithValue("@val", concept.Value);
                             cmd1.Parameters.AddWithValue("@link", links);
+                            cmd1.Parameters.AddWithValue("@img_id", vid_id);
 
                             cmd1.ExecuteNonQuery();
                         }
@@ -427,8 +401,8 @@ namespace WindowsFormsApp1
                 }
                 Mini_Log.AppendText(">> Analyzed: " + n + " images \n");
 
-                progressBar1.Value = n+1;
-                
+                progressBar1.Value = n + 1;
+
             }
             Mini_Log.AppendText(">> Analyzing completed successfully! \n");
             MessageBox.Show("Analyze Completed Successfully!", "Success!", MessageBoxButtons.OK);
@@ -469,15 +443,15 @@ namespace WindowsFormsApp1
             }
 
             string sql_our_screens = "SELECT * FROM an_base_our_screens"; // выбираем нашу БД и выводим с нее все
-            
+
 
             cmd.Connection = conn; //открываем соединение
             cmd.CommandText = sql_our_screens; //вбиваем запрос
 
-            
+
 
             int rows_c = dataGridView6.RowCount;
-            
+
 
             //1) Выбираем из базы данных данные и построчно сравниваем с нужными нам значениями которые находятся в таблице - averages
             //2) Лучшие результаты вбиваем в dataGridView7
@@ -486,38 +460,39 @@ namespace WindowsFormsApp1
 
             try
             {
-                
+
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
-                {                    
+                {
                     for (int i = 0; i < (rows_c - 1); i++)
                     {
                         if ((reader["name"].ToString() == dataGridView6[0, i].Value.ToString()) && (Convert.ToDecimal(reader["value"].ToString()) > Convert.ToDecimal(dataGridView6[3, i].Value.ToString()))) //поиск совпадающих имен и сравнение value
                         {
-                            dataGridView7.Rows.Add(reader["name"], reader["value"], reader["img_link"]);                                                                                   
-                        }                        
+                            dataGridView7.Rows.Add(reader["name"], reader["value"], reader["img_link"], reader["vid_id"]);
+                        }
                     }
                 }
                 reader.Close();
-                
+
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error: \r\n{ 0}" + ex.ToString(), "Error", MessageBoxButtons.OK);
             }
-            
+
 
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            
+
             MySqlConnection conn = DBUtils.GetDBConnection();
             MySqlCommand cmd = conn.CreateCommand();
             int rows_d = dataGridView7.RowCount;
+
             cmd.Connection.Open();
             MessageBox.Show(rows_d.ToString(), "Error", MessageBoxButtons.OK);
-            string sql2 = "INSERT INTO `videos`.`compare_buf` (`name`, `value`, `link`) VALUES (@name, @value, @link);";
+            string sql2 = "INSERT INTO `videos`.`compare_buf` (`name`, `value`, `link`, `vid_id`) VALUES (@name, @value, @link, @vid_id);";
             for (int i = 0; i < (rows_d - 1); i++)
             {
                 using (MySqlCommand cmd1 = new MySqlCommand(sql2, conn))
@@ -526,23 +501,31 @@ namespace WindowsFormsApp1
                     cmd1.Parameters.AddWithValue("@name", dataGridView7[0, i].Value.ToString());
                     cmd1.Parameters.AddWithValue("@value", Convert.ToDouble(dataGridView7[1, i].Value.ToString()));
                     cmd1.Parameters.AddWithValue("@link", dataGridView7[2, i].Value.ToString());
+                    cmd1.Parameters.AddWithValue("@vid_id", dataGridView7[3, i].Value.ToString());
 
                     cmd1.ExecuteNonQuery();
                 }
             }
-            string sql3 = "SELECT link, value,  COUNT(link) as comparsions, SUM(value)/COUNT(link) as aver FROM compare_buf GROUP BY link;";
+
+            string sql3 = "SELECT link, value, vid_id,  COUNT(link) as comparsions, SUM(value)/COUNT(link) as aver FROM compare_buf GROUP BY link;";
             cmd.CommandText = sql3;
             MySqlDataReader reader;
+
+            int rows_ds = dataGridView8.RowCount;
+            
+
+
             try
             {
-                
+
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (Convert.ToInt32(reader["comparsions"].ToString()) > 15)
+                    if ((Convert.ToInt32(reader["comparsions"].ToString()) > Convert.ToInt32(textBox2.Text)))
                     {
-                        dataGridView8.Rows.Add(reader["aver"], reader["comparsions"], reader["link"]);                       
+                        dataGridView8.Rows.Add(reader["aver"], reader["comparsions"], reader["link"], reader["vid_id"]);
                     }
+                    
                 }
                 reader.Close();
                 dataGridView8.Sort(dataGridView8.Columns[0], ListSortDirection.Descending);
@@ -550,10 +533,32 @@ namespace WindowsFormsApp1
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error: \r\n{ 0}" + ex.ToString(), "Error", MessageBoxButtons.OK);
-                
             }
-            //Mini_Log.AppendText(">> BEST SCREEN: " + dataGridView8[2, 0].Value.ToString());
+            //Mini_Log.AppendText(">> BEST SCREEN: " + dataGridView8[2, 0].Value.ToString() + " ID: " + vid_ids);
+
+            int rows_df = dataGridView8.Rows.Count;
+            string sql33 = "INSERT INTO `videos`.`result` (`ave`, `compare`, `link`, `vid_id`) VALUES (@ave, @compare, @link, @vid_id);";
+            for (int i = 0; i < rows_df; i++)
+            {
+                using (MySqlCommand cmd1 = new MySqlCommand(sql33, conn))
+                {
+
+                    cmd1.Parameters.AddWithValue("@ave", Convert.ToDouble(dataGridView8[0, i].Value.ToString()));
+                    cmd1.Parameters.AddWithValue("@compare", Convert.ToInt32(dataGridView8[1, i].Value.ToString()));
+                    cmd1.Parameters.AddWithValue("@link", dataGridView8[2, i].Value.ToString());
+                    cmd1.Parameters.AddWithValue("@vid_id", Convert.ToInt32(dataGridView8[3, i].Value.ToString()));
+
+                    cmd1.ExecuteNonQuery();
+                }
+            }
+
+
         }
+
+
+
+
+
 
         private void button11_Click(object sender, EventArgs e)
         {
@@ -591,6 +596,115 @@ namespace WindowsFormsApp1
             reader.Read();
 
             MessageBox.Show("Tables Dropped!", "Success", MessageBoxButtons.OK);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            
+
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.Connection.Open();
+
+            string sql3 = "SELECT vid_id, max(ave), link from result GROUP BY vid_id";
+            cmd.CommandText = sql3;
+            MySqlDataReader reader;
+            try
+            {
+
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    
+                    Mini_Log.AppendText("Best screen link for video: \nID: " + reader["vid_id"] + "\nLink for screen:" + reader["link"] + "\n");
+                    dataGridView1.Rows.Add(reader["vid_id"], GetImageFromUrl(reader["link"].ToString()));
+                }
+                reader.Close();
+                
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error: \r\n{ 0}" + ex.ToString(), "Error", MessageBoxButtons.OK);
+            }
+            //Mini_Log.AppendText(">> BEST SCREEN: " + dataGridView8[2, 0].Value.ToString() + " ID: " + vid_ids);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            string drop1 = "TRUNCATE `result`;";
+
+
+            cmd.Connection.Open();
+
+            cmd.CommandText = drop1;
+
+            MySqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            reader.Read();
+
+            MessageBox.Show("Tables Dropped!", "Success", MessageBoxButtons.OK);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
+            dataGridView3.Rows.Clear();
+            dataGridView4.Rows.Clear();
+            dataGridView5.Rows.Clear();
+            dataGridView6.Rows.Clear();
+            dataGridView7.Rows.Clear();
+            dataGridView8.Rows.Clear();
+            Images_Compare_Grid.Rows.Clear();
+            Screen_Analyze_Grid.Rows.Clear();
+        }
+
+        private void groupBox10_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button15_Click_1(object sender, EventArgs e)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            string drop1 = "TRUNCATE `averages`;";
+
+
+            cmd.Connection.Open();
+
+            cmd.CommandText = drop1;
+
+            MySqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            reader.Read();
+
+            MessageBox.Show("Tables Dropped!", "Success", MessageBoxButtons.OK);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 newForm = new Form2();
+            newForm.Show();
+        }
+
+        public static Image GetImageFromUrl(string url)
+        {
+            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+            // if you have proxy server, you may need to set proxy details like below 
+            //httpWebRequest.Proxy = new WebProxy("proxyserver",port){ Credentials = new NetworkCredential(){ UserName ="uname", Password = "pw"}};
+
+            using (HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse())
+            {
+                using (Stream stream = httpWebReponse.GetResponseStream())
+                {
+                    return Image.FromStream(stream);
+                }
+            }
         }
     }
 }
