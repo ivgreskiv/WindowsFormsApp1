@@ -116,8 +116,8 @@
             this.button11 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -190,8 +190,8 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl1.Location = new System.Drawing.Point(-3, 0);
             this.tabControl1.Name = "tabControl1";
@@ -548,11 +548,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(199, 268);
+            this.label3.Location = new System.Drawing.Point(136, 268);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.Size = new System.Drawing.Size(163, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "50/50";
+            this.label3.Text = "Промежуточный выбор лучших";
             // 
             // dataGridView8
             // 
@@ -945,9 +945,20 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 300;
+            this.dataGridView1.RowTemplate.Height = 150;
+            this.dataGridView1.RowTemplate.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.Size = new System.Drawing.Size(1269, 640);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 200F;
+            this.Column9.HeaderText = "Image";
+            this.Column9.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 200;
             // 
             // Column8
             // 
@@ -955,14 +966,6 @@
             this.Column8.HeaderText = "Video ID";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 400F;
-            this.Column9.HeaderText = "Image";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 400;
             // 
             // Form1
             // 

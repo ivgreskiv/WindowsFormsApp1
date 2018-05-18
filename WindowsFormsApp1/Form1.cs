@@ -618,6 +618,7 @@ namespace WindowsFormsApp1
                     
                     Mini_Log.AppendText("Best screen link for video: \nID: " + reader["vid_id"] + "\nLink for screen:" + reader["link"] + "\n");
                     dataGridView1.Rows.Add(reader["vid_id"], GetImageFromUrl(reader["link"].ToString()));
+                 
                 }
                 reader.Close();
                 
